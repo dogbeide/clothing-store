@@ -14,9 +14,12 @@ const NavBar = () => {
           <Link className="navbar-link" to='/shop'>
             SHOP
           </Link>
+          <Link className="sign-in" to='/sign-in'>
+            SIGN IN
+          </Link>
         </div>
       </div>
-      <Outlet />
+      {/* <Outlet /> */}
     </Fragment>
   )
 }
