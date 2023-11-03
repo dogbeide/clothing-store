@@ -43,10 +43,14 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code == 'auth/email-already-in-use') {
-        setErrorMsg('Error: email already in use');
-      }
-      console.log(error)
+      const { code } = error
+      const rawCode = code.substring(code.indexOf('/') + 1);
+      const msg = 'Error: ' + rawCode.replace(/-/g, ' ');
+      setErrorMsg(msg);
+      // if (error.code == 'auth/email-already-in-use') {
+      //   setErrorMsg('Error: email already in use');
+      // }
+      // console.log(error)
     }
   }
 
