@@ -7,6 +7,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import './sign-up-form.styles.scss'
+import ErrorMsg, { getErrorMsg } from "../error-msg/error-msg.component";
 
 const defaultFormFields = {
   'displayName': '',
@@ -45,14 +46,8 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      const { code } = error
-      const rawCode = code.substring(code.indexOf('/') + 1);
-      const msg = 'Error: ' + rawCode.replace(/-/g, ' ');
+      const msg = getErrorMsg(error);
       setErrorMsg(msg);
-      // if (error.code == 'auth/email-already-in-use') {
-      //   setErrorMsg('Error: email already in use');
-      // }
-      // console.log(error)
     }
   }
 
@@ -67,7 +62,7 @@ const SignUpForm = () => {
         <FormInput label='Confirm Password' type="password" onChange={handleChange} name="confirmPassword" value={confirmPassword} required />
 
         <Button type="submit">Sign Up</Button>
-        {errorMsg ? <div style={{'color': 'red'}}>{errorMsg}</div> : null}
+        <ErrorMsg errorMsg={errorMsg} />
       </form>
     </div>
   )
