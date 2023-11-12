@@ -1,5 +1,6 @@
 import { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import './navbar.styles.scss'
@@ -27,6 +28,7 @@ const NavBar = () => {
               </Link>
             )
           }
+          <CartIcon />
         </div>
       </div>
       {/* <Outlet /> */}
