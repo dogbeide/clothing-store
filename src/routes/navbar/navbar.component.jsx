@@ -1,17 +1,12 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
-import { UserContext } from "../../contexts/user.contexts";
+import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import './navbar.styles.scss'
 import Logo from '../../assets/reeftipus_41x38.svg'
 
 const NavBar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const signOutHandler = async () => {
-    const res = await signOutUser();
-    setCurrentUser(null);
-  }
+  const { currentUser } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -25,7 +20,7 @@ const NavBar = () => {
           </Link>
           {
             currentUser ? (
-              <span className="navbar-link" onClick={signOutHandler}>SIGN OUT</span>
+              <span className="navbar-link" onClick={signOutUser}>SIGN OUT</span>
             ) : (
               <Link className="sign-in" to='/auth'>
                 SIGN IN
