@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Button from '../button/button.component';
 import './shop-item.styles.scss'
 import { CartContext } from '../../contexts/cart.context';
+import { Link } from 'react-router-dom';
 
 const ShopItem = ({ item }) => {
   const { name, price, imageUrl} = item;
