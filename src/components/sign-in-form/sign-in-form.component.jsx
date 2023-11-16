@@ -14,13 +14,9 @@ const defaultFormFields = {
   email: "",
   password: "",
 };
-  email: "",
-  password: "",
-};
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const [errorMsg, setErrorMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { email, password } = formFields;
 
@@ -28,7 +24,6 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
-  };
   };
 
   const handleSubmit = async (event) => {
@@ -44,12 +39,9 @@ const SignInForm = () => {
       setErrorMsg(msg);
     }
   };
-  };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -61,18 +53,11 @@ const SignInForm = () => {
         <FormInput
           label="email"
           type="email"
-        <FormInput
-          label="email"
-          type="email"
           name="email"
           value={email}
           onChange={onChangeHandler}
           required
         />
-        <FormInput
-          label="password"
-          type="password"
-          name="password"
         <FormInput
           label="password"
           type="password"
