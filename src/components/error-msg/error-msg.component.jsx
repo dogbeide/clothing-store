@@ -1,4 +1,4 @@
-import './error-msg.styles.scss'
+import { ErrorMsg_ } from './error-msg.styles.jsx'
 
 export const getErrorMsg = (error) => {
   const { code } = error
@@ -14,7 +14,7 @@ export const getErrorMsg = (error) => {
 const ErrorMsg = ({ errorMsg }) => {
   return (
     errorMsg ? 
-      <div className='error-msg'>{errorMsg}</div> : 
+      <ErrorMsg_>{errorMsg}</ErrorMsg_> : 
       null
   );
 }
