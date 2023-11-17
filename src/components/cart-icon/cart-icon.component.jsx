@@ -8,8 +8,8 @@ import {
 import ShoppingBagSVG from "../../assets/shopping-bag.svg";
 
 const CartIcon = () => {
-  const { isOpen, setIsOpen, totalItemCount } = useContext(CartContext);
-  const toggleCartDropdown = () => setIsOpen(!isOpen);
+  const { cartIsOpen, setCartIsOpen, totalItemCount } = useContext(CartContext);
+  const toggleCartDropdown = () => setCartIsOpen(!cartIsOpen);
 
   return (
     <CartIconContainer onClick={toggleCartDropdown}>
