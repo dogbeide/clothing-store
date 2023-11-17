@@ -12,13 +12,13 @@ import {
 } from "./checkout-item.styles.jsx";
 
 const CheckOutItem = ({ cartItem }) => {
-  const { addItemToCart, removeItemFromCart, removeAllOfItemFromCart } =
+  const { addItemToCart, removeItemFromCart, clearItemFromCart } =
     useContext(CartContext);
   const { name, imageUrl, price, count } = cartItem;
 
   const removeItemHandler = () => removeItemFromCart(cartItem);
   const addItemHandler = () => addItemToCart(cartItem);
-  const removeAllOfItemHandler = () => removeAllOfItemFromCart(cartItem);
+  const clearItemHandler = () => clearItemFromCart(cartItem);
 
   return (
     <CheckOutItemContainer>
@@ -32,7 +32,7 @@ const CheckOutItem = ({ cartItem }) => {
         <Arrow onClick={addItemHandler}>&gt;</Arrow>
       </Count>
       <Price>${price}</Price>
-      <RemoveButton onClick={removeAllOfItemHandler}>&#10005;</RemoveButton>
+      <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
     </CheckOutItemContainer>
   );
 };
