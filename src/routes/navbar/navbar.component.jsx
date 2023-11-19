@@ -1,11 +1,13 @@
 import { Fragment, useContext } from "react";
+import { useSelector } from 'react-redux'
+
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
-import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import Logo from "../../assets/reeftipus_41x38.svg";
 import { CartContext } from "../../contexts/cart.context";
+import { selectCurrentUser } from "../../store/user/user.selector.js";
 
+import Logo from "../../assets/reeftipus_41x38.svg";
 import {
   NavBarContainer,
   NavLinks,
@@ -14,8 +16,8 @@ import {
 } from "./navbar.styles.jsx";
 
 const NavBar = () => {
-  const { currentUser } = useContext(UserContext);
   const { cartIsOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
 
   return (
     <Fragment>
