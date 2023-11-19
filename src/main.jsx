@@ -9,7 +9,7 @@ import { CartProvider } from './contexts/cart.context.jsx'
 import { store } from './store/store.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <CartProvider>
@@ -17,5 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </CartProvider>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )
