@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { categoriesReducer } from "./categories.reducer";
 
 const selectCategoryReducer = (state) => {
   return state.categories;
@@ -16,7 +17,7 @@ export const selectCategoriesMap = createSelector(
   [selectCategories], //*** */ run this to compare against NEW output --- "foos to memoize"
   (categories) => {
     //*** */ only run if categories param !== selectCategories(). New object --- "check memoized params from foos"
-   return categories.reduce((acc, category) => {
+    return categories.reduce((acc, category) => {
       const { title, items } = category; // destructure off data we need from docsnapshot
       acc[title.toLowerCase()] = items; // add objects of title to new object
       return acc; // give it to huge batch
@@ -24,13 +25,7 @@ export const selectCategoriesMap = createSelector(
   }
 );
 
-/* REPLACED BY ^^^ ALL OF */
-/************************ */
-// export const selectCategoriesMap = (state) => {
-//   console.log("selectCategoriesMap()");
-//   return state.categories.categories.reduce((acc, category) => {
-//     const { title, items } = category; // destructure off data we need from docsnapshot
-//     acc[title.toLowerCase()] = items; // add objects of title to new object
-//     return acc; // give it to huge batch
-//   }, {});
-// };
+export const selectCategoriesIsLoading = createSelector(
+  [selectCategoryReducer],
+  (categoriesReducer) => categoriesReducer.isLoading
+);
