@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { signOutStart } from "../../store/user/user.action.js";
 import { selectCurrentUser } from "../../store/user/user.selector.js";
 import { selectCartIsOpen } from "../../store/cart/cart.selector.js";
 
@@ -17,8 +17,11 @@ import {
 } from "./navbar.styles.jsx";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const cartIsOpen = useSelector(selectCartIsOpen);
   const currentUser = useSelector(selectCurrentUser);
+
+  const signOutHandler = () => dispatch(signOutStart());
 
   return (
     <Fragment>
@@ -31,7 +34,7 @@ const NavBar = () => {
             SHOP
           </NavLink>
           {currentUser ? (
-            <NavLink as="span" className="navbar-link" onClick={signOutUser}>
+            <NavLink as="span" className="navbar-link" onClick={signOutHandler}>
               SIGN OUT
             </NavLink>
           ) : (

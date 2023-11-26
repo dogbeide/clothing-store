@@ -1,10 +1,15 @@
 import { ErrorMsg_ } from './error-msg.styles.jsx'
 
 export const getErrorMsg = (error) => {
-  const { code } = error
-  const rawCode = code.substring(code.indexOf('/') + 1);
-  const msg = 'Error: ' + rawCode.replace(/-/g, ' ');
-  return msg;
+  const { code } = error;
+  if (code) {
+    const rawCode = code.substring(code.indexOf('/') + 1);
+    const msg = 'Error: ' + rawCode.replace(/-/g, ' ');
+    return msg;
+  } else {
+    console.log('ASDF', error)
+    return 'Error: Unknown'
+  }
 }
 
 const ErrorMsg = ({ errorMsg }) => {
