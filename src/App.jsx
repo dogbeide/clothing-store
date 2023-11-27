@@ -7,7 +7,7 @@ import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/user/user.reducer";
 
 import NavBar from "./routes/navbar/navbar.component";
 import Home from "./routes/home/home.component";
@@ -23,6 +23,7 @@ const App = () => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
+      console.log('our action', setCurrentUser(user));
       dispatch(setCurrentUser(user));
     });
 
