@@ -23,8 +23,9 @@ const App = () => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
+      const pickedUser = user && (({ accessToken, email }) => ({accessToken, email}))(user);
       console.log('our action', setCurrentUser(user));
-      dispatch(setCurrentUser(user));
+      dispatch(setCurrentUser(pickedUser));
     });
 
     return unsubscribe;
