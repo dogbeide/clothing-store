@@ -7,7 +7,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import App from './App.jsx'
 import './index.scss'
 import { store, persistor } from './store/store.js'
-import { stripePromise } from './utils/stripe/stripe.utils.js'
+import { stripePromise } from './utils/stripe/stripe.utils'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
