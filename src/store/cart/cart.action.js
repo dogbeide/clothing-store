@@ -1,3 +1,4 @@
+import { create } from "domain";
 import { createAction } from "../../utils/reducer/reducer.utils";
 import { CART_ACTION_TYPES } from "./cart.type";
 
@@ -59,4 +60,8 @@ export const removeItemFromCart = (cartItems, item) => {
 export const clearItemFromCart = (cartItems, item) => {
   const newCartItems = _clearItemFromCart(item, cartItems);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
+};
+export const clearCart = () => {
+  const emptyCart = [];
+  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, emptyCart);
 };
